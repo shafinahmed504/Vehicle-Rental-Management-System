@@ -4,6 +4,7 @@ import { connectToMongoDB } from "./config/db"
 import { initCollections } from "./config/initDB"
 import { toNodeHandler } from "better-auth/node"
 import { auth } from "./lib/auth"
+import { vehicleRouter } from "./vehicle/vehicleRoutes"
 
 
 dotenv.config()
@@ -16,6 +17,7 @@ app.use(express.json())
 const port=process.env.PORT
 
 app.all("/api/auth/*splat",toNodeHandler(auth))
+app.use("/vehicles",vehicleRouter)
 
 
 async function start() {

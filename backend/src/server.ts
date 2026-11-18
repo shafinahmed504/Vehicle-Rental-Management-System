@@ -5,6 +5,8 @@ import { initCollections } from "./config/initDB"
 import { toNodeHandler } from "better-auth/node"
 import { auth } from "./lib/auth"
 import { vehicleRouter } from "./vehicle/vehicleRoutes"
+import { bookingRouter } from "./booking/bookingRoutes"
+
 
 
 dotenv.config()
@@ -18,6 +20,7 @@ const port=process.env.PORT
 
 app.all("/api/auth/*splat",toNodeHandler(auth))
 app.use("/vehicles",vehicleRouter)
+app.use("/bookings",bookingRouter)
 
 
 async function start() {
